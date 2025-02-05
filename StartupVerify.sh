@@ -1,12 +1,12 @@
 #!/bin/bash
 
-ProccessorsList="$(dirname $(realpath "$0"))/ProcessList.txt"
-if ! test -f $ProccessorsList;then
-	touch $ProccessorsList
-	echo "Created: $ProccessorsList"
+StartupsList="$(dirname $(realpath "$0"))/StartupList.txt"
+if ! test -f $StartupsList;then
+	touch $StartupsList
+	echo "Created: $StartupsList"
 fi
 
-ProccessorsListContents=$(cat $ProccessorsList)
+StartupFileContents=$(cat $StartupsList)
 LogDirectory="$(dirname $(realpath "$0"))/Logs"
 
 if ! test -d $LogDirectory;then
@@ -15,7 +15,7 @@ fi
 
 
 declare -A Running
-for process in $ProccessorsListContents;do
+for process in $StartupFileContents;do
 	Running["$process"]=false
 done
 
