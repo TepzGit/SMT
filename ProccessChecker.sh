@@ -35,7 +35,7 @@ for key in ${!Running[@]};do
 
 	if [[ $value == false ]];then
 		if [[ "$(command -v $key)" != "" ]];then
-			$key > "$LogDirectory/${basename%.*}.log" &
+			"$key" > "$LogDirectory/${basename%.*}.log" &
 			echo "Started $key up again"
 		else
 			echo "ERROR: Couldnt find executable: $key"
